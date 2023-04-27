@@ -1,0 +1,32 @@
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for(int a0 = 0; a0 < t; a0++){
+            long n = in.nextLong();
+            long maxPrime = -1;
+
+    // divide by 2 until it is no longer even
+    while (n % 2 == 0) {
+        maxPrime = 2;
+        n >>= 1; // equivalent to n = n / 2
+    }
+
+    // check for odd factors up to the square root of n
+    for (long i = 3; i <= Math.sqrt(n); i += 2) {
+        while (n % i == 0) {
+            maxPrime = i;
+            n = n / i;
+        }
+    }
+
+    // if n is still greater than 2, then it must be a prime number
+    if (n > 2) {
+        maxPrime = n;
+    }
+
+    System.out.println(maxPrime);
+        }
+    }
+}
