@@ -1,2 +1,2 @@
 # ProjectEuler-in-Hackerrank
-Hackerrank ProjectEuler+ solutions
+Hackerrank ProjectEuler+ Java solutions
