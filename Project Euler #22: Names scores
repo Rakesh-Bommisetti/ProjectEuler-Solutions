@@ -1,0 +1,43 @@
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc= new Scanner(System.in);
+        int t=sc.nextInt();
+        String[] names=new String[t];
+        for(int i=0;i<t;i++){
+            names[i]=sc.next();
+        }
+        Arrays.sort(names);
+        
+        int[] scores = new int[names.length];
+        for (int i = 0; i < names.length; i++) {
+            int score = calculateNameScore(names[i]) * (i + 1);
+            scores[i] = score;
+        }
+
+        int n=sc.nextInt();
+        String queries[]=new String[n];
+        for(int i=0;i<n;i++){
+            queries[i]=sc.next();
+        }
+        
+        for (String query : queries) {
+            int index = Arrays.binarySearch(names, query);
+            if (index >= 0) {
+                int score = scores[index];
+                System.out.println(score);
+            }
+        }
+    }
+
+    // Calculate the alphabetical value for a name
+    public static int calculateNameScore(String name) {
+        int score = 0;
+        for (int i = 0; i < name.length(); i++) {
+            char ch = name.charAt(i);
+            score += ch - 'A' + 1;
+        }
+        return score;
+    }
+}
