@@ -1,0 +1,41 @@
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for(int a0 = 0; a0 < t; a0++){
+            int n = in.nextInt();
+            prime(n);
+        }
+    }
+
+  public static void prime(int n) {
+      if (n <= 0) {
+          throw new IllegalArgumentException("n should be a positive integer");
+      }
+  
+      List<Integer> primes = new ArrayList<>();
+      primes.add(2);
+      int count = 1;
+      int num = 3;
+  
+      while (count < n) {
+          boolean isPrime = true;
+          for (int prime : primes) {
+              if (prime > Math.sqrt(num)) {
+                  break;
+              }
+              if (num % prime == 0) {
+                  isPrime = false;
+                  break;
+              }
+          }
+          if (isPrime) {
+              primes.add(num);
+              count++;
+          }
+          num += 2;
+      }
+      System.out.println(primes.get(n - 1));
+  }
+}
