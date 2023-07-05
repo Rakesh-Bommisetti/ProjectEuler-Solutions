@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class Problem9 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for (int a0 = 0; a0 < t; a0++) {
+            int n = in.nextInt();
+            System.out.println(Pythagorean(n));
+        }
+    }
+
+    public static int Pythagorean(int n) {
+        int maxProduct = -1;
+
+        for (int a = 1; a < n / 3; a++) {
+            for (int b = a + 1; b < n / 2; b++) {
+                int c = n - a - b;
+                if (isPythagoreanTriplet(a, b, c)) {
+                    int product = a * b * c;
+                    maxProduct = Math.max(product, maxProduct);
+                }
+            }
+        }
+
+        return maxProduct;
+    }
+
+    private static boolean isPythagoreanTriplet(int a, int b, int c) {
+        return (a * a + b * b == c * c);
+    }
+}
